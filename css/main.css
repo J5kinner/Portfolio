@@ -1,3 +1,8 @@
+/*
+Project by Jonah Skinner
+
+Mobile First Responsive Design
+*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300&display=swap");
 body {
   height: 100vh;
@@ -150,10 +155,180 @@ section {
 }
 
 .portfolio {
-  background: white;
+  background: grey;
 }
 
 .portfolio-container a img {
   border-radius: 1em;
   margin-bottom: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+  .featured, .portfolio {
+    text-align: left;
+  }
+
+  .featured, .portfolio-container {
+    display: grid;
+    grid-template-columns: 40% auto;
+  }
+
+  .left, .portfolio-left {
+    display: grid;
+    place-content: center;
+  }
+
+  .right {
+    margin-left: 2em;
+    margin-top: 1em;
+  }
+
+  .skills {
+    margin-top: -5em;
+    margin-bottom: -7em;
+    padding-top: 7em;
+  }
+
+  .skills-container ul {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 1em;
+  }
+
+  .portfolio {
+    padding-top: 7em;
+  }
+
+  .portfolio-container img {
+    margin-left: 2em;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .hero {
+    height: 90vh;
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: 66% auto;
+    background: unset;
+  }
+  .nav-container header {
+    background: #061326;
+  }
+
+  header {
+    padding: 2em 2em 2em 4em;
+  }
+
+  .social-header {
+    padding: 2em 4em 2em 0;
+  }
+
+  section {
+    padding: 4em;
+  }
+
+  .social-header {
+    display: block;
+    background: #061326;
+  }
+  .social-header ul {
+    display: flex;
+    justify-content: space-between;
+    width: 7em;
+    float: right;
+  }
+  .social-header img {
+    width: 20px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 66% auto;
+    background: unset;
+    padding: 0;
+  }
+  .hero .content {
+    background: #0C1833;
+    padding: 6em 8em 6em 4em;
+    text-align: left;
+  }
+  .hero .content h1 {
+    font-size: 3em;
+    line-height: 1.2em;
+  }
+
+  .meet {
+    margin: unset;
+  }
+
+  .hero-design {
+    display: unset;
+    margin-left: -50%;
+    margin-top: 15%;
+    width: 100%;
+  }
+
+  .portfolio img {
+    float: right;
+    max-width: 500px;
+  }
+}
+@media only screen and (min-width: 1250px) {
+  header {
+    padding: 2em 2em 2em 10em;
+  }
+
+  .social-header {
+    padding: 2em 10em 2em 0;
+  }
+
+  section {
+    padding: 10em 10em 4em 10em;
+  }
+
+  .hero .content {
+    padding: 6em 8em 6em 10em;
+  }
+}
+@media only screen and (min-width: 1550px) {
+  header {
+    padding: 2em 2em 2em 20em;
+  }
+
+  .social-header {
+    padding: 2em 20em 2em 0;
+  }
+
+  section {
+    padding: 6em 20em 4em 20em;
+  }
+
+  .hero .content {
+    padding: 9em 20em 6em 20em;
+  }
+}
+.circle {
+  animation: circleAnim 1s infinite alternate-reverse;
+}
+
+@-webkit-keyframes circleAnim {
+  from {
+    transform: translate(291px, 708px);
+    z-index: 5;
+  }
+  to {
+    transform: translate(291px, 740px);
+  }
+}
+
+@keyframes circleAnim {
+  from {
+    transform: translate(291px, 708px);
+    z-index: 5;
+  }
+  to {
+    transform: translate(291px, 740px);
+  }
 }/*# sourceMappingURL=main.css.map */

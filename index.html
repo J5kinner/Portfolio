@@ -19,35 +19,35 @@
                     <li><a href="#">My Skills</a></li>
                     <li><a href="#">Hire Me</a></li>
                 </ul>
-                <div class="social-header">
-                    <ul>
-                        <li><a href="#"><img src="images/github.svg" alt="Github"></a></li>
-                        <li><a href="#"><img src="images/linkedin.svg" alt="linkedin"></a></li>
-                        <li><a href="#"><img src="images/codepen.svg" alt="Codepen"></a></li>
-
-                    </ul>
-                </div>
+                
             </nav>
         </header>
+        <div class="social-header">
+            <ul>
+                <li><a href="#"><img src="images/github.svg" alt="Github"></a></li>
+                <li><a href="#"><img src="images/linkedin.svg" alt="linkedin"></a></li>
+                <li><a href="#"><img src="images/codepen.svg" alt="Codepen"></a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="hero">
         <div class="content">
-            <h1>Wonderfully Crafted Web Experiences</h1>
-            <div class="meet">
+            <h1 class="stagger1">Wonderfully Crafted Web Experiences</h1>
+            <div class="meet stagger2">
                 <span>👇</span>
                 <p>Meet Jonah Skinner</p>
                 </div>
-            <div class="careers">
+            <div class="careers stagger1">
                 <p>Software Engineer, Frontend Developer, Web App Developer</p>
             </div>
-            <svg class="scroll" width="47" height="82" viewBox="0 0 47 82">
+            <svg class="scroll stagger2" width="47" height="82" viewBox="0 0 47 82">
                 <g id="Group_10" data-name="Group 10" transform="translate(-279 -696)">
                   <g id="Rectangle_3" data-name="Rectangle 3" transform="translate(279 696)" fill="none" stroke="#f8f5f5" stroke-linejoin="round" stroke-width="5">
                     <rect width="47" height="82" rx="23.5" stroke="none"/>
                     <rect x="2.5" y="2.5" width="42" height="77" rx="21" fill="none"/>
                   </g>
-                  <circle id="Ellipse_1" data-name="Ellipse 1" cx="12" cy="12" r="12" transform="translate(291 708)" fill="#fff"/>
+                  <circle class="circle" id="Ellipse_1" data-name="Ellipse 1" cx="12" cy="12" r="12" transform="translate(291 708)" fill="#fff"/>
                 </g>
               </svg>  
         </div>
@@ -149,5 +149,31 @@
     </section>
 
 
+<!-- Plugins  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js" integrity="sha512-Q+G390ZU2qKo+e4q+kVcJknwfGjKJOdyu5mVMcR95NqL6XaF4lY4nsSvIVB3NDP54ACsS9rqhE1DVqgpApl//Q==" crossorigin="anonymous"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        var tl = gsap.timeline();
+
+        tl.from('.content', {
+            y: '-30%',
+            opacity: 0,
+            duration: 2,
+            ease: "expo"
+        })
+
+        tl.from('.stagger1', {
+            opacity: 0,
+            y: -50, 
+            stagger: .3,
+            duration: 2,
+            ease: "expo"
+
+        })
+
+    </script>
 </body>
 </html>
