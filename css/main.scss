@@ -68,10 +68,6 @@ header {
     background: #061326
 }
 
-
-
-
-
 .social-header, .hero-design {
     display: none;
 }
@@ -190,7 +186,7 @@ section {
 }
 
 .portfolio {
-    background: #061326;
+    background: #0C1833;
     color: white;
 }
 
@@ -221,6 +217,7 @@ section {
     .right {
         margin-left: 2em;
         margin-top: 1em;
+        border-radius: 1em;
     }
 
     .skills {
@@ -356,21 +353,5 @@ section {
     }
     .hero .content {
         padding: 9em 20em 6em 20em;
-    }
-}
-
-//animations
-
-.circle {
-    animation: circleAnim 1s infinite alternate-reverse;
-}
-
-@keyframes circleAnim {
-    from {
-        transform: translate(291px, 708px);
-        z-index: 5;
-    }
-    to {
-        transform: translate(291px, 740px);
     }
 }
