@@ -8,6 +8,7 @@ body {
   height: 100vh;
   margin: 0;
   font-family: "Poppins", sans-serif;
+  background: #0C1833;
 }
 
 ul {
@@ -33,6 +34,8 @@ img {
 
 header {
   display: flex;
+  flex-grow: 1;
+  min-width: 50%;
   justify-content: space-between;
   padding: 2em;
 }
@@ -40,12 +43,22 @@ header .logo {
   color: white;
   font-weight: bold;
 }
+header .ref {
+  color: white;
+  font-size: 10px;
+  display: block;
+}
 header ul {
   display: flex;
 }
 header ul a {
   display: block;
   padding: 0 1em;
+}
+
+.designer-container {
+  margin-top: -10%;
+  background: #061326;
 }
 
 .social-header, .hero-design {
@@ -86,18 +99,6 @@ section {
   position: relative;
 }
 
-.featured::before {
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: white;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
 .subtitle {
   text-transform: uppercase;
   font-weight: bold;
@@ -107,15 +108,27 @@ section {
 }
 
 .featured-title {
-  color: black;
+  color: #FFFFFF;
   font-weight: bold;
   font-size: 1.3em;
   margin-top: -0.4em;
   display: block;
 }
 
+.featured-hire {
+  color: #27CC91;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-top: -0.4em;
+  text-decoration: underline;
+}
+
+.featured-briefcase {
+  font-size: 1.5em;
+}
+
 .featured-desc {
-  color: grey;
+  color: #FFFFFF;
   margin-bottom: 3em;
   font-size: 0.9em;
   line-height: 1.8em;
@@ -142,7 +155,7 @@ section {
   width: 75px;
 }
 .skills-container ul li .icon-container.two {
-  width: 150px;
+  width: 200px;
 }
 .skills-container ul li .icon-container.three {
   width: 60px;
@@ -152,10 +165,12 @@ section {
 }
 .skills-container ul li .featured-desc {
   margin-bottom: 2em;
+  color: black;
 }
 
 .portfolio {
-  background: grey;
+  background: #061326;
+  color: white;
 }
 
 .portfolio-container a img {
@@ -267,6 +282,13 @@ section {
     display: unset;
     margin-left: -50%;
     margin-top: 15%;
+    width: 100%;
+  }
+
+  .foot-design {
+    display: unset;
+    margin-left: 0%;
+    margin-top: -47%;
     width: 100%;
   }
 

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="436" height="331" viewBox="0 0 436 331">
+  <g id="Group_11" data-name="Group 11" transform="translate(-1210 -5721)">
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="109" height="109" rx="20" transform="translate(1434 5721)" fill="#06224d"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="109" height="109" rx="20" transform="translate(1319 5830)" fill="#fff"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="109" height="109" rx="20" transform="translate(1537 5830)" fill="rgba(6,34,77,0.67)"/>
+    <rect id="Rectangle_7" data-name="Rectangle 7" width="109" height="109" rx="20" transform="translate(1210 5939)" fill="#fff" opacity="0.41"/>
+    <rect id="Rectangle_9" data-name="Rectangle 9" width="109" height="109" rx="20" transform="translate(1428 5939)" fill="#06224d"/>
+    <path id="Polygon_1" data-name="Polygon 1" d="M48.239,12.522a7,7,0,0,1,12.522,0L103.935,98.87A7,7,0,0,1,97.674,109H11.326A7,7,0,0,1,5.065,98.87Z" transform="translate(1543 5830) rotate(90)" fill="#28f2aa"/>
+    <path id="Polygon_2" data-name="Polygon 2" d="M48.239,12.522a7,7,0,0,1,12.522,0L103.935,98.87A7,7,0,0,1,97.674,109H11.326A7,7,0,0,1,5.065,98.87Z" transform="translate(1314 6052) rotate(-90)" fill="#2cfff5"/>
+  </g>
+</svg>
