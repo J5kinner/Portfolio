@@ -339,4 +339,27 @@ section {
   .hero .content {
     padding: 9em 20em 6em 20em;
   }
+}
+.circle {
+  animation: circleAnim 1s infinite alternate-reverse;
+}
+
+@-webkit-keyframes circleAnim {
+  from {
+    transform: translate(291px, 708px);
+    z-index: 5;
+  }
+  to {
+    transform: translate(291px, 740px);
+  }
+}
+
+@keyframes circleAnim {
+  from {
+    transform: translate(291px, 708px);
+    z-index: 5;
+  }
+  to {
+    transform: translate(291px, 740px);
+  }
 }/*# sourceMappingURL=main.css.map */
