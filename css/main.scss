@@ -106,8 +106,6 @@ section {
     position: relative;
 }
 
-
-
 .subtitle {
     text-transform: uppercase;
     font-weight: bold;
@@ -124,6 +122,8 @@ section {
     display: block;
 }
 
+
+
 .featured-hire {
     color: #27CC91;
     font-weight: bold;
@@ -131,6 +131,7 @@ section {
     margin-top: -.4em;
     text-decoration: underline;
 }
+
 .featured-briefcase {
     font-size: 1.5em;
   }
@@ -146,7 +147,9 @@ section {
 .skills {
     background: #061326;
 }
-
+.skill-text {
+    padding-bottom: 3em;
+}
 .skills-container ul li {
     background: white;
     padding: 2em; 
@@ -218,6 +221,9 @@ section {
         margin-left: 2em;
         margin-top: 1em;
         border-radius: 1em;
+    }
+    .skill-text {
+        text-align:left;
     }
 
     .skills {
