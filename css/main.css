@@ -33,10 +33,16 @@ img {
 }
 
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   min-width: 50%;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 2em;
 }
 header .logo {
@@ -49,16 +55,13 @@ header .ref {
   display: block;
 }
 header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 header ul a {
   display: block;
   padding: 0 1em;
-}
-
-.designer-container {
-  margin-top: -10%;
-  background: #061326;
 }
 
 .social-header,
@@ -75,6 +78,8 @@ header ul a {
 }
 
 .meet {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
   width: 200px;
@@ -183,6 +188,11 @@ section {
   margin-bottom: 2em;
 }
 
+.designer-container {
+  background: #061326;
+  margin-top: -10%;
+}
+
 @media only screen and (min-width: 768px) {
   .featured,
 .portfolio {
@@ -263,8 +273,12 @@ section {
     background: #061326;
   }
   .social-header ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 7em;
     float: right;
   }
@@ -346,26 +360,36 @@ section {
     padding: 9em 20em 6em 20em;
   }
 }
+@media only screen and (min-width: 2500px) {
+  .designer-container {
+    background: #061326;
+    margin-bottom: -10%;
+  }
+}
 .circle {
   animation: circleAnim 1s infinite alternate-reverse;
 }
 
 @-webkit-keyframes circleAnim {
   from {
-    transform: translate(291px, 708px);
+    -webkit-transform: translate(291px, 708px);
+            transform: translate(291px, 708px);
     z-index: 5;
   }
   to {
-    transform: translate(291px, 740px);
+    -webkit-transform: translate(291px, 740px);
+            transform: translate(291px, 740px);
   }
 }
 
 @keyframes circleAnim {
   from {
-    transform: translate(291px, 708px);
+    -webkit-transform: translate(291px, 708px);
+            transform: translate(291px, 708px);
     z-index: 5;
   }
   to {
-    transform: translate(291px, 740px);
+    -webkit-transform: translate(291px, 740px);
+            transform: translate(291px, 740px);
   }
 }/*# sourceMappingURL=main.css.map */

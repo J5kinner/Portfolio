@@ -62,10 +62,7 @@ header {
   }
 }
 
-.designer-container {
-  margin-top: -10%;
-  background: #061326;
-}
+
 
 .social-header,
 .hero-design {
@@ -187,6 +184,11 @@ section {
 .portfolio-container a img {
   border-radius: 1em;
   margin-bottom: 2em;
+}
+.designer-container {
+  background: #061326;
+  margin-top: -10%;
+
 }
 
 //Media Queries for adjusting screen sizes
@@ -347,6 +349,14 @@ section {
   }
   .hero .content {
     padding: 9em 20em 6em 20em;
+  }
+}
+
+@media only screen and (min-width: 2500px) {
+  .designer-container {
+    background: #061326;
+    margin-bottom: -10%;
+  
   }
 }
 
