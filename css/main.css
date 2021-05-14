@@ -363,6 +363,7 @@ section {
 @media only screen and (min-width: 2500px) {
   .designer-container {
     background: #061326;
+    margin-top: 0%;
     margin-bottom: -10%;
   }
 }
