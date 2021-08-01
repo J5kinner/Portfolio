@@ -1,5 +1,5 @@
 # Portfolio
-This will be the portfolio website I built from the ground up using HTML, CSS and JS
+This is my portfolio website using HTML, CSS (SASS) and JS
 
 # How to run it in VS Code
 Use the watch live extension in VS Code 
