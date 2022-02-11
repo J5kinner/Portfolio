@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="436" height="440" viewBox="0 0 436 440">
+  <g id="HeroImage" transform="translate(-1140 -262)">
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="109" height="109" rx="20" transform="translate(1358 262)" fill="#06224d"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="109" height="109" rx="20" transform="translate(1249 371)" fill="#fff"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="109" height="109" rx="20" transform="translate(1467 371)" fill="rgba(6,34,77,0.67)"/>
+    <rect id="Rectangle_7" data-name="Rectangle 7" width="109" height="109" rx="20" transform="translate(1140 480)" fill="#fff" opacity="0.41"/>
+    <rect id="Rectangle_8" data-name="Rectangle 8" width="109" height="109" rx="20" transform="translate(1249 593)" fill="#fff"/>
+    <rect id="Rectangle_9" data-name="Rectangle 9" width="109" height="109" rx="20" transform="translate(1358 480)" fill="#06224d"/>
+    <path id="Polygon_1" data-name="Polygon 1" d="M48.239,12.522a7,7,0,0,1,12.522,0L103.935,98.87A7,7,0,0,1,97.674,109H11.326A7,7,0,0,1,5.065,98.87Z" transform="translate(1473 371) rotate(90)" fill="#28f2aa"/>
+    <path id="Polygon_2" data-name="Polygon 2" d="M48.239,12.522a7,7,0,0,1,12.522,0L103.935,98.87A7,7,0,0,1,97.674,109H11.326A7,7,0,0,1,5.065,98.87Z" transform="translate(1244 593) rotate(-90)" fill="#28f2aa"/>
+  </g>
+</svg>
