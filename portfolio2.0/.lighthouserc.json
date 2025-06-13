@@ -2,6 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./portfolio2.0/build",
+      "url": ["/"],
       "numberOfRuns": 1
     },
     "assert": {
