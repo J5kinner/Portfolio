@@ -19,6 +19,7 @@ const SkillsSection = styled.section`
 const SkillsHeader = styled(motion.div)`
   text-align: center;
   margin-bottom: 3em;
+  margin-top: 2em;
 
   @media (min-width: 768px) {
     text-align: left;
