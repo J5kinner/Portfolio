@@ -8,7 +8,7 @@ import Skills from './components/sections/Skills';
 import Portfolio from './components/sections/Portfolio';
 import HireMe from './components/sections/HireMe';
 import Footer from './components/layout/Footer';
-import { initGA, trackPageView } from './utils/analytics';
+import { trackPageView } from './utils/gtm';
 
 const theme = {
   colors: {
@@ -24,9 +24,6 @@ const theme = {
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Initialize Google Analytics
-    initGA();
-    
     // Track initial page view
     trackPageView('Portfolio Home');
   }, []);
