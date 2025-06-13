@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: portfolio2.0/package-lock.json
+
+    - name: Install dependencies
+      working-directory: ./portfolio2.0
+      run: npm ci
+
+    - name: Type check
+      working-directory: ./portfolio2.0
+      run: npm run type-check
+
+    - name: Run tests with coverage
+      working-directory: ./portfolio2.0
+      run: npm run test:ci
+      env:
+        CI: true
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      if: matrix.node-version == '16.x'
+      with:
+        file: ./portfolio2.0/coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+    - name: Build project
+      working-directory: ./portfolio2.0
+      run: npm run build
+
+    - name: Test that build works
+      working-directory: ./portfolio2.0
+      run: |
+        npx serve -s build &
+        SERVER_PID=$!
+        sleep 5
+        curl -f http://localhost:3000 > /dev/null
+        kill $SERVER_PID
+
+  # lighthouse-audit:
+  #   runs-on: ubuntu-latest
+  #   needs: quality-checks
+  #   if: github.event_name == 'pull_request'
+
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v4
+
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v4
+  #     with:
+  #       node-version: '16.x'
+  #       cache: 'npm'
+  #       cache-dependency-path: portfolio2.0/package-lock.json
+
+  #   - name: Install dependencies
+  #     working-directory: ./portfolio2.0
+  #     run: npm ci
+
+  #   - name: Build project
+  #     working-directory: ./portfolio2.0
+  #     run: npm run build
+
+  #   - name: Run Lighthouse audit
+  #     uses: treosh/lighthouse-ci-action@v10
+  #     with:
+  #       configPath: './portfolio2.0/.lighthouserc.json'
+  #       uploadArtifacts: true
+  #       temporaryPublicStorage: true 

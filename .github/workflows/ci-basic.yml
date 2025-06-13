@@ -1,0 +1,49 @@
+name: CI Basic
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: portfolio2.0/package-lock.json
+
+    - name: Install dependencies
+      working-directory: ./portfolio2.0
+      run: npm ci
+
+    - name: Run tests with coverage
+      working-directory: ./portfolio2.0
+      run: npm run test:ci
+      env:
+        CI: true
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      if: matrix.node-version == '16.x'
+      with:
+        file: ./portfolio2.0/coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+    - name: Build project
+      working-directory: ./portfolio2.0
+      run: npm run build 
