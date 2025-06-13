@@ -8,7 +8,6 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.126",
     "framer-motion": "^12.12.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -16,7 +15,6 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.3",
     "styled-components": "^6.1.18",
-    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -51,9 +49,11 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^16.0.0",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "@types/react-scroll": "^1.8.10",
-    "@types/styled-components": "^5.1.34"
+    "@types/styled-components": "^5.1.34",
+    "typescript": "^4.9.5"
   }
 }

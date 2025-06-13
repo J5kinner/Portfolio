@@ -181,14 +181,12 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const lines = [
-      'class SoftwareEngineer {',
-      '  constructor() {',
-      '    this.skills = [',
-      '      "Android", "Kotlin",',
-      '      "Jetpack Compose", "MVI",',
-      '      "& much more..."',
-      '    ];',
-      '  }',
+      'class SoftwareEngineer : AndroidDeveloper {',
+      '  private val skills = listOf(',
+      '    "Android", "Kotlin",',
+      '    "Jetpack Compose", "MVI",',
+      '    "& much more..."',
+      '  )',
       '}'
     ];
 

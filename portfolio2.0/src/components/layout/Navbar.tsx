@@ -245,7 +245,7 @@ const navVariants = {
     y: 0, 
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 20
     }
@@ -256,7 +256,7 @@ const menuVariants = {
   closed: {
     x: "100%",
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 400,
       damping: 40
     }
@@ -264,7 +264,7 @@ const menuVariants = {
   open: {
     x: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 400,
       damping: 40
     }
