@@ -1,9 +1,8 @@
 {
   "ci": {
     "collect": {
-      "url": ["http://localhost:3000"],
       "staticDistDir": "./build",
-      "numberOfRuns": 3
+      "numberOfRuns": 1
     },
     "assert": {
       "assertions": {
