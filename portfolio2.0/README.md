@@ -3,7 +3,21 @@
 ![CI Status](https://github.com/J5kinner/Portfolio/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/J5kinner/Portfolio/branch/main/graph/badge.svg)](https://codecov.io/gh/J5kinner/Portfolio)
 
-A modern, responsive portfolio website built with React, TypeScript, and styled-components featuring smooth animations and interactive navigation.
+Portfolio/
+├── .github/workflows/
+│   ├── ci.yml
+│   └── ci-basic.yml
+├── index.html                       (Old HTML portfolio)
+├── css/, IMAGES/, etc.              (Old portfolio assets)
+└── portfolio2.0/
+    ├── src/
+    ├── public/
+    ├── package.json
+    ├── .lighthouserc.json
+    └── build/
+        ├── index.html
+        ├── static/
+        └── ...other built files
 
 ## 🚀 Features
 
