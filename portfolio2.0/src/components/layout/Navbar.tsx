@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
 import * as FaIcons from 'react-icons/fa';
 import { mainNavItems, socialNavItems, NavItem } from '../../config/navigation';
+import { trackSocialClick, trackNavigation } from '../../utils/analytics';
 
 // Type guard to check if a value is a valid React component
 const isValidIcon = (icon: any): icon is React.ComponentType<{ size: number }> => {
@@ -315,9 +316,15 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeSection]);
 
-  const handleSetActive = (to: string) => {
+  const handleSetActive = (to: string, source: 'desktop' | 'mobile' | 'logo' = 'desktop') => {
     setActiveSection(to);
     setIsMobileMenuOpen(false);
+    // Track navigation clicks with source
+    try {
+      trackNavigation(to, source);
+    } catch (error) {
+      console.warn('Analytics error:', error);
+    }
   };
 
   const renderNavLink = (item: NavItem) => {
@@ -330,6 +337,13 @@ const Navbar: React.FC = () => {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            try {
+              trackSocialClick(item.id);
+            } catch (error) {
+              console.warn('Analytics error:', error);
+            }
+          }}
         >
           <DynamicIcon iconName={item.id} size={20} />
         </SocialLink>
@@ -344,7 +358,7 @@ const Navbar: React.FC = () => {
         smooth={true}
         offset={-70}
         duration={500}
-        onSetActive={() => setActiveSection(item.id)}
+        onSetActive={() => handleSetActive(item.id, 'desktop')}
       >
         <NavLink
           className={activeSection === item.id ? 'active' : ''}
@@ -367,7 +381,7 @@ const Navbar: React.FC = () => {
         <Logo
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => handleSetActive('hero')}
+          onClick={() => handleSetActive('hero', 'logo')}
         >
           JS<span>.</span>
         </Logo>
@@ -382,7 +396,15 @@ const Navbar: React.FC = () => {
 
         <MobileMenuButton
           className={isMobileMenuOpen ? 'open' : ''}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={() => {
+            const newState = !isMobileMenuOpen;
+            setIsMobileMenuOpen(newState);
+            try {
+              trackNavigation(newState ? 'mobile_menu_open' : 'mobile_menu_close', 'mobile');
+            } catch (error) {
+              console.warn('Analytics error:', error);
+            }
+          }}
           whileTap={{ scale: 0.95 }}
         >
           <span />
@@ -407,7 +429,7 @@ const Navbar: React.FC = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                onSetActive={() => handleSetActive(item.id)}
+                onSetActive={() => handleSetActive(item.id, 'mobile')}
               >
                 <MobileNavLink
                   className={activeSection === item.id ? 'active' : ''}
@@ -428,6 +450,13 @@ const Navbar: React.FC = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      try {
+                        trackSocialClick(`${item.id}_mobile`);
+                      } catch (error) {
+                        console.warn('Analytics error:', error);
+                      }
+                    }}
                   >
                     <DynamicIcon iconName={item.id} size={24} />
                   </MobileSocialLink>

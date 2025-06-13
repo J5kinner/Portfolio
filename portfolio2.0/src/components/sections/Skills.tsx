@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaTools, FaCode, FaMobile } from 'react-icons/fa';
 import type { IconBaseProps } from 'react-icons';
+import { trackSectionView, trackSkillInteraction } from '../../utils/analytics';
 
 const SkillsSection = styled.section`
   background: ${({ theme }) => theme.colors.secondary};
@@ -57,6 +58,12 @@ const SkillCard = styled(motion.div)`
   padding: 2em;
   border-radius: 1em;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(39, 204, 145, 0.15);
+  }
 `;
 
 const IconContainer = styled.div<{ size: string }>`
@@ -132,6 +139,13 @@ const Skills: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
+        onViewportEnter={() => {
+          try {
+            trackSectionView('Skills');
+          } catch (error) {
+            console.warn('Analytics error:', error);
+          }
+        }}
       >
         <Subtitle>Current</Subtitle>
         <Title>Skills</Title>
@@ -144,6 +158,15 @@ const Skills: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
+            onClick={() => {
+              try {
+                trackSkillInteraction(skill.title);
+              } catch (error) {
+                console.warn('Analytics error:', error);
+              }
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <IconContainer size={skill.iconSize}>
               {skill.icon}
