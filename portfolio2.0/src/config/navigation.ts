@@ -1,8 +1,8 @@
 export interface NavItem {
   id: string;
   label: string;
-  path?: string;  // Optional external path
-  isExternal?: boolean;  // Whether the link is external
+  path?: string;
+  isExternal?: boolean; 
 }
 
 export const mainNavItems: NavItem[] = [

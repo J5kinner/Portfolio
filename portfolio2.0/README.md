@@ -1,46 +1,151 @@
-# Getting Started with Create React App
+# Portfolio 2.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CI Status](https://github.com/J5kinner/Portfolio/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/J5kinner/Portfolio/branch/main/graph/badge.svg)](https://codecov.io/gh/J5kinner/Portfolio)
 
-## Available Scripts
+A modern, responsive portfolio website built with React, TypeScript, and styled-components featuring smooth animations and interactive navigation.
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Smooth Navigation** - Intelligent scroll-based section highlighting
+- **Modern Animations** - Built with Framer Motion for fluid interactions
+- **TypeScript** - Full type safety and excellent developer experience
+- **Comprehensive Testing** - Well-tested components with high coverage
+- **Performance Optimized** - Lighthouse audited for optimal performance
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Tech Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React 19** - Latest React with concurrent features
+- **TypeScript** - Type-safe development
+- **Styled Components** - CSS-in-JS styling
+- **Framer Motion** - Animation library
+- **React Testing Library** - Component testing
+- **Jest** - Test runner with coverage
+- **GitHub Actions** - CI/CD pipeline
 
-### `npm test`
+## 📋 Available Scripts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Development
 
-### `npm run build`
+```bash
+npm start
+```
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Testing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm test
+```
+Launches the test runner in interactive watch mode
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm test -- --coverage
+```
+Runs tests with coverage report
 
-### `npm run eject`
+```bash
+npm test -- --watchAll=false
+```
+Runs all tests once (useful for CI)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Building
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
+Builds the app for production to the `build` folder with optimized bundles
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🧪 Testing Strategy
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This project maintains high test coverage with comprehensive testing of:
 
-## Learn More
+- **Component Rendering** - All components render correctly
+- **User Interactions** - Click, scroll, and navigation behaviors
+- **Scroll Highlighting Logic** - Critical navbar section detection
+- **Edge Cases** - Viewport boundaries and mobile responsiveness
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Key Test Files
+- `src/components/layout/__tests__/Navbar.test.tsx` - Comprehensive navbar testing including scroll highlighting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔄 CI/CD Pipeline
+
+Our GitHub Actions workflow automatically:
+
+- ✅ **Type Checks** - Validates TypeScript types
+- ✅ **Runs Tests** - Executes full test suite with coverage
+- ✅ **Builds Project** - Ensures production build succeeds
+- ✅ **Tests Build** - Verifies built app serves correctly
+- ✅ **Lighthouse Audit** - Performance and accessibility checks (on PRs)
+
+### Quality Gates
+- **Test Coverage** - Maintains high coverage with detailed reports
+- **Type Safety** - All TypeScript must compile without errors
+- **Build Success** - Production builds must complete successfully
+- **Performance** - Lighthouse scores monitored for regressions
+
+## 🎯 Key Components
+
+### Navbar
+The navigation component features intelligent scroll-based highlighting:
+- Detects which section is most visible in viewport
+- Highlights corresponding navigation item
+- Handles edge cases for last section (Hire Me)
+- Smooth scroll navigation between sections
+
+### Sections
+- **Hero** - Landing section with animated introduction
+- **Featured** - Highlighted projects and achievements
+- **Skills** - Technical expertise and capabilities
+- **Portfolio** - Complete project showcase
+- **Hire Me** - Contact information and availability
+
+## 📱 Responsive Design
+
+- **Mobile First** - Designed for mobile, enhanced for desktop
+- **Breakpoints** - Tablet (768px) and Desktop (1050px)
+- **Touch Friendly** - Optimized touch targets and interactions
+- **Performance** - Optimized images and lazy loading
+
+## 🚀 Deployment
+
+The project is configured for easy deployment to various platforms:
+
+- **Static Hosting** - Netlify, Vercel, GitHub Pages
+- **CDN Distribution** - Optimized for global content delivery
+- **Performance** - Built with modern bundling and optimization
+
+## 🔧 Development Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/J5kinner/Portfolio.git
+   cd Portfolio/portfolio2.0
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm start
+   ```
+
+4. **Run tests**
+   ```bash
+   npm test
+   ```
+
+## 📊 Performance
+
+- **Lighthouse Score** - Audited for performance, accessibility, and SEO
+- **Bundle Size** - Optimized for fast loading
+- **Core Web Vitals** - Meets Google's performance standards
+
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

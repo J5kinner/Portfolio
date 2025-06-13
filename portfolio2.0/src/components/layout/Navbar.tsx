@@ -279,11 +279,41 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Custom logic to handle active section detection based on viewport visibility
+      const sections = ['hero', 'featured', 'skills', 'portfolio', 'hire'];
+      let currentSection = 'hero';
+      let maxVisibleArea = 0;
+      
+      // Find the section with the most visible area in the viewport
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const navbarHeight = 70; // Account for navbar height
+          
+          // Calculate visible area of this section
+          const visibleTop = Math.max(rect.top, navbarHeight);
+          const visibleBottom = Math.min(rect.bottom, window.innerHeight);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          
+          // If this section has more visible area than the current max, it becomes active
+          if (visibleHeight > maxVisibleArea && visibleHeight > 100) { // Minimum 100px visible
+            maxVisibleArea = visibleHeight;
+            currentSection = sectionId;
+          }
+        }
+      });
+      
+      // Update active section only if it has changed
+      if (currentSection !== activeSection) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const handleSetActive = (to: string) => {
     setActiveSection(to);

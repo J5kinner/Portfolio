@@ -100,6 +100,7 @@ const CodeLine = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: pre; /* Preserve whitespace and indentation */
 
   &::before {
     content: '>';
@@ -177,36 +178,36 @@ const FloatingElement = styled(motion.div)`
 
 const Hero: React.FC = () => {
   const [codeLines, setCodeLines] = useState<string[]>([]);
-  const lines = [
-    'class SoftwareEngineer {',
-    '  constructor() {',
-    '    this.skills = [',
-    '      "React", "TypeScript",',
-    '      "Node.js", "Python",',
-    '      "& much more..."',
-    '    ];',
-    '  }',
-    '}'
-  ];
 
   useEffect(() => {
+    const lines = [
+      'class SoftwareEngineer {',
+      '  constructor() {',
+      '    this.skills = [',
+      '      "Android", "Kotlin",',
+      '      "Jetpack Compose", "MVI",',
+      '      "& much more..."',
+      '    ];',
+      '  }',
+      '}'
+    ];
+
     let isMounted = true;
     let timeoutIds: NodeJS.Timeout[] = [];
 
-    const typeCode = async () => {
+    const typeCode = () => {
       setCodeLines([]);
       
-      for (let i = 0; i < lines.length; i++) {
-        if (!isMounted) break;
-        
+      // Use forEach instead of for loop to avoid closure issues
+      lines.forEach((line, index) => {
         const timeoutId = setTimeout(() => {
           if (isMounted) {
-            setCodeLines(prev => [...prev, lines[i]]);
+            setCodeLines(prev => [...prev, line]);
           }
-        }, i * 500);
+        }, index * 500);
         
         timeoutIds.push(timeoutId);
-      }
+      });
     };
 
     typeCode();
