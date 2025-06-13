@@ -1,7 +1,7 @@
 [build]
   base = "portfolio2.0"
   command = "npm run build"
-  publish = "portfolio2.0/build"
+  publish = "/build"
 
 [build.environment]
   NODE_VERSION = "16"
