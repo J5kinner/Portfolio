@@ -368,7 +368,6 @@ const Navbar: React.FC = () => {
               onSetActive={() => handleSetActive(section.id, 'desktop')}
             >
               <NavLink
-                className={activeSection === section.id ? 'active' : ''}
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 onClick={() => handleNavClick(section.id, 'desktop')}
@@ -421,7 +420,6 @@ const Navbar: React.FC = () => {
                 onSetActive={() => handleSetActive(section.id, 'mobile')}
               >
                 <MobileNavLink
-                  className={activeSection === section.id ? 'active' : ''}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleNavClick(section.id, 'mobile')}
