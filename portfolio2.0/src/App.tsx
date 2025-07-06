@@ -2,13 +2,10 @@ import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/GlobalStyles';
 import Navbar from './components/layout/Navbar';
-import Hero from './components/sections/Hero';
-import Featured from './components/sections/Featured';
-import Skills from './components/sections/Skills';
-import Portfolio from './components/sections/Portfolio';
-import HireMe from './components/sections/HireMe';
 import Footer from './components/layout/Footer';
 import { trackPageView } from './utils/gtm';
+import { getEnabledSections } from './config/sections';
+import { shouldEnableAnalytics } from './config/environment';
 
 const theme = {
   colors: {
@@ -23,9 +20,13 @@ const theme = {
 };
 
 const App: React.FC = () => {
+  const enabledSections = getEnabledSections();
+
   useEffect(() => {
-    // Track initial page view
-    trackPageView('Portfolio Home');
+    // Track initial page view only if analytics is enabled
+    if (shouldEnableAnalytics()) {
+      trackPageView('Portfolio Home');
+    }
   }, []);
 
   return (
@@ -33,11 +34,9 @@ const App: React.FC = () => {
       <GlobalStyles />
       <Navbar />
       <main>
-        <Hero />
-        <Featured />
-        <Skills />
-        <Portfolio />
-        <HireMe />
+        {enabledSections.map(({ id, component: Component }) => (
+          <Component key={id} />
+        ))}
       </main>
       <Footer />
     </ThemeProvider>

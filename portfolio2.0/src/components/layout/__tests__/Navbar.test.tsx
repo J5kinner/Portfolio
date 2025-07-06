@@ -29,22 +29,43 @@ jest.mock('framer-motion', () => ({
     nav: 'nav',
     div: 'div',
     button: 'button',
-    a: 'a'
+    a: 'a',
+    h1: 'h1',
+    h2: 'h2',
+    h3: 'h3',
+    p: 'p',
+    span: 'span',
+    section: 'section',
+    form: 'form',
+    input: 'input',
+    textarea: 'textarea',
+    img: 'img',
+    ul: 'ul',
+    li: 'li'
   },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  AnimatePresence: ({ children }: { children: any }) => children,
+  useInView: () => true,
+  useAnimation: () => ({
+    start: jest.fn(),
+    stop: jest.fn(),
+    set: jest.fn()
+  })
 }));
 
 // Mock react-scroll
 jest.mock('react-scroll', () => ({
-  Link: ({ children, to, onSetActive, ...props }: any) => (
-    <div 
-      data-testid={`scroll-link-${to}`} 
-      onClick={() => onSetActive && onSetActive(to)}
-      {...props}
-    >
-      {children}
-    </div>
-  )
+  Link: ({ children, to, onSetActive, ...props }: any) => {
+    const { spy, smooth, offset, duration, ...domProps } = props;
+    return (
+      <div 
+        data-testid={`scroll-link-${to}`} 
+        onClick={() => onSetActive && onSetActive(to)}
+        {...domProps}
+      >
+        {children}
+      </div>
+    );
+  }
 }));
 
 // Mock theme for styled-components
@@ -93,8 +114,8 @@ describe('Navbar Component', () => {
   test('renders with hero section active by default', () => {
     renderNavbar();
     
-    const heroLink = screen.getByTestId('scroll-link-hero');
-    expect(heroLink).toBeInTheDocument();
+    // Check that the Home navigation item exists (hero section)
+    expect(screen.getByText('Home')).toBeInTheDocument();
   });
 
   test('mobile menu button toggles state', () => {
@@ -128,11 +149,14 @@ describe('Navbar Component', () => {
   test('navigation items are clickable', () => {
     renderNavbar();
     
-    const skillsLink = screen.getByTestId('scroll-link-skills');
-    fireEvent.click(skillsLink);
+    // Skills should be one of the navigation items
+    expect(screen.getByText('Skills')).toBeInTheDocument();
+    
+    // Click on the skills navigation item
+    fireEvent.click(screen.getByText('Skills'));
     
     // Test that the element exists and is clickable
-    expect(skillsLink).toBeInTheDocument();
+    expect(screen.getByText('Skills')).toBeInTheDocument();
   });
 
   test('logo text is present', () => {

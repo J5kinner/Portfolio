@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
 import * as FaIcons from 'react-icons/fa';
-import { mainNavItems, socialNavItems, NavItem } from '../../config/navigation';
+import { socialNavItems, NavItem } from '../../config/navigation';
+import { getNavigationSections, getSectionIds } from '../../config/sections';
 import { trackSocialClick, trackNavigation } from '../../utils/analytics';
 
 // Type guard to check if a value is a valid React component
@@ -275,49 +276,22 @@ const menuVariants = {
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  
+  // Get sections from the new configuration system
+  const navigationSections = getNavigationSections();
+  const sectionIds = getSectionIds();
+
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Custom logic to handle active section detection based on viewport visibility
-      const sections = ['hero', 'featured', 'skills', 'portfolio', 'hire'];
-      let currentSection = 'hero';
-      let maxVisibleArea = 0;
-      
-      // Find the section with the most visible area in the viewport
-      sections.forEach(sectionId => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const navbarHeight = 70; // Account for navbar height
-          
-          // Calculate visible area of this section
-          const visibleTop = Math.max(rect.top, navbarHeight);
-          const visibleBottom = Math.min(rect.bottom, window.innerHeight);
-          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-          
-          // If this section has more visible area than the current max, it becomes active
-          if (visibleHeight > maxVisibleArea && visibleHeight > 100) { // Minimum 100px visible
-            maxVisibleArea = visibleHeight;
-            currentSection = sectionId;
-          }
-        }
-      });
-      
-      // Update active section only if it has changed
-      if (currentSection !== activeSection) {
-        setActiveSection(currentSection);
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, []);
 
   const handleSetActive = (to: string, source: 'desktop' | 'mobile' | 'logo' = 'desktop') => {
-    setActiveSection(to);
     setIsMobileMenuOpen(false);
     // Track navigation clicks with source
     try {
@@ -327,47 +301,33 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const renderNavLink = (item: NavItem) => {
-    if (item.isExternal && item.path) {
-      return (
-        <SocialLink
-          key={item.id}
-          href={item.path}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => {
-            try {
-              trackSocialClick(item.id);
-            } catch (error) {
-              console.warn('Analytics error:', error);
-            }
-          }}
-        >
-          <DynamicIcon iconName={item.id} size={20} />
-        </SocialLink>
-      );
+  const handleNavClick = (sectionId: string, source: 'desktop' | 'mobile' | 'logo' = 'desktop') => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      handleSetActive(sectionId, source);
     }
+  };
 
+  const renderSocialLink = (item: NavItem) => {
     return (
-      <Link
+      <SocialLink
         key={item.id}
-        to={item.id}
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-        onSetActive={() => handleSetActive(item.id, 'desktop')}
+        href={item.path}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          try {
+            trackSocialClick(item.id);
+          } catch (error) {
+            console.warn('Analytics error:', error);
+          }
+        }}
       >
-        <NavLink
-          className={activeSection === item.id ? 'active' : ''}
-          whileHover={{ y: -2 }}
-          whileTap={{ y: 0 }}
-        >
-          {item.label}
-        </NavLink>
-      </Link>
+        <DynamicIcon iconName={item.id} size={20} />
+      </SocialLink>
     );
   };
 
@@ -378,20 +338,46 @@ const Navbar: React.FC = () => {
       animate="visible"
     >
       <NavContainer $scrolled={isScrolled}>
-        <Logo
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => handleSetActive('hero', 'logo')}
+        <Link
+          to={sectionIds[0] || 'hero'}
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          onSetActive={() => handleSetActive(sectionIds[0] || 'hero', 'logo')}
         >
-          JS<span>.</span>
-        </Logo>
+          <Logo
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            JS<span>.</span>
+          </Logo>
+        </Link>
 
         <NavLinks>
-          {mainNavItems.map(renderNavLink)}
+          {navigationSections.map((section) => (
+            <Link
+              key={section.id}
+              to={section.id}
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              onSetActive={() => handleSetActive(section.id, 'desktop')}
+            >
+              <NavLink
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+                onClick={() => handleNavClick(section.id, 'desktop')}
+              >
+                {section.label}
+              </NavLink>
+            </Link>
+          ))}
         </NavLinks>
 
         <SocialLinks>
-          {socialNavItems.map(renderNavLink)}
+          {socialNavItems.map(renderSocialLink)}
         </SocialLinks>
 
         <MobileMenuButton
@@ -421,22 +407,22 @@ const Navbar: React.FC = () => {
             animate="open"
             exit="closed"
           >
-            {mainNavItems.map((item) => (
+            {navigationSections.map((section) => (
               <Link
-                key={item.id}
-                to={item.id}
+                key={section.id}
+                to={section.id}
                 spy={true}
                 smooth={true}
                 offset={-70}
                 duration={500}
-                onSetActive={() => handleSetActive(item.id, 'mobile')}
+                onSetActive={() => handleSetActive(section.id, 'mobile')}
               >
                 <MobileNavLink
-                  className={activeSection === item.id ? 'active' : ''}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => handleNavClick(section.id, 'mobile')}
                 >
-                  {item.label}
+                  {section.label}
                 </MobileNavLink>
               </Link>
             ))}

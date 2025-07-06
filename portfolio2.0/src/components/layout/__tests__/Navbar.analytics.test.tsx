@@ -12,18 +12,21 @@ jest.mock('../../../utils/analytics', () => ({
 
 // Mock react-scroll
 jest.mock('react-scroll', () => ({
-  Link: ({ children, to, onSetActive, onClick, ...props }: any) => (
-    <div 
-      data-testid={`nav-link-${to}`}
-      onClick={() => {
-        onClick?.();
-        onSetActive?.();
-      }}
-      {...props}
-    >
-      {children}
-    </div>
-  ),
+  Link: ({ children, to, onSetActive, onClick, ...props }: any) => {
+    const { spy, smooth, offset, duration, ...domProps } = props;
+    return (
+      <div 
+        data-testid={`nav-link-${to}`}
+        onClick={() => {
+          onClick?.();
+          onSetActive?.();
+        }}
+        {...domProps}
+      >
+        {children}
+      </div>
+    );
+  },
 }));
 
 const theme = {
