@@ -6,7 +6,6 @@ import * as FaIcons from 'react-icons/fa';
 import { socialNavItems, NavItem } from '../../config/navigation';
 import { getNavigationSections, getSectionIds } from '../../config/sections';
 import { trackSocialClick, trackNavigation } from '../../utils/analytics';
-import { useScrollSpy } from '../../hooks';
 
 // Type guard to check if a value is a valid React component
 const isValidIcon = (icon: any): icon is React.ComponentType<{ size: number }> => {
@@ -281,7 +280,6 @@ const Navbar: React.FC = () => {
   // Get sections from the new configuration system
   const navigationSections = getNavigationSections();
   const sectionIds = getSectionIds();
-  const activeSection = useScrollSpy(sectionIds, 70);
 
 
   useEffect(() => {
