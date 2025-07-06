@@ -283,12 +283,6 @@ const Navbar: React.FC = () => {
   const sectionIds = getSectionIds();
   const activeSection = useScrollSpy(sectionIds, 70);
 
-  // Debug logging
-  useEffect(() => {
-    console.log('Navigation sections:', navigationSections);
-    console.log('Section IDs:', sectionIds);
-    console.log('Active section:', activeSection);
-  }, [navigationSections, sectionIds, activeSection]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -310,13 +304,10 @@ const Navbar: React.FC = () => {
   };
 
   const handleNavClick = (sectionId: string, source: 'desktop' | 'mobile' | 'logo' = 'desktop') => {
-    console.log('Nav click:', sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       handleSetActive(sectionId, source);
-    } else {
-      console.error('Element not found:', sectionId);
     }
   };
 
