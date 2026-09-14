@@ -4,7 +4,7 @@
   publish = "/build"
 
 [build.environment]
-  NODE_VERSION = "16"
+  NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
 
 # React Router support - redirect all routes to index.html
