@@ -23,25 +23,46 @@ jest.mock('../../../config/navigation', () => ({
   ]
 }));
 
-// Mock framer-motion to avoid animation issues in tests
+// Mock framer-motion to avoid animation issues in tests.
+// Real framer-motion strips its own animation props (whileHover, variants, etc.)
+// before they reach the DOM; a plain string tag like 'div' does not, so each
+// motion.* stand-in below filters them out itself to avoid React DOM warnings.
+const MOTION_ONLY_PROPS = new Set([
+  'initial', 'animate', 'exit', 'variants', 'transition',
+  'whileHover', 'whileTap', 'whileFocus', 'whileInView', 'whileDrag',
+  'drag', 'dragConstraints', 'dragElastic', 'dragMomentum', 'draglistener',
+  'layout', 'layoutId', 'onAnimationStart', 'onAnimationComplete', 'viewport'
+]);
+
+const createMotionMock = (tag: string) =>
+  React.forwardRef<HTMLElement, any>(({ children, ...props }, ref) => {
+    const domProps: Record<string, unknown> = {};
+    for (const key of Object.keys(props)) {
+      if (!MOTION_ONLY_PROPS.has(key)) {
+        domProps[key] = props[key];
+      }
+    }
+    return React.createElement(tag, { ...domProps, ref }, children);
+  });
+
 jest.mock('framer-motion', () => ({
   motion: {
-    nav: 'nav',
-    div: 'div',
-    button: 'button',
-    a: 'a',
-    h1: 'h1',
-    h2: 'h2',
-    h3: 'h3',
-    p: 'p',
-    span: 'span',
-    section: 'section',
-    form: 'form',
-    input: 'input',
-    textarea: 'textarea',
-    img: 'img',
-    ul: 'ul',
-    li: 'li'
+    nav: createMotionMock('nav'),
+    div: createMotionMock('div'),
+    button: createMotionMock('button'),
+    a: createMotionMock('a'),
+    h1: createMotionMock('h1'),
+    h2: createMotionMock('h2'),
+    h3: createMotionMock('h3'),
+    p: createMotionMock('p'),
+    span: createMotionMock('span'),
+    section: createMotionMock('section'),
+    form: createMotionMock('form'),
+    input: createMotionMock('input'),
+    textarea: createMotionMock('textarea'),
+    img: createMotionMock('img'),
+    ul: createMotionMock('ul'),
+    li: createMotionMock('li')
   },
   AnimatePresence: ({ children }: { children: any }) => children,
   useInView: () => true,
