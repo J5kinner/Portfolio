@@ -126,8 +126,8 @@ const Skills: React.FC = () => {
           {FaMobile(iconProps)}
         </IconWrapper>
       ),
-      title: 'Web App Developer',
-      description: 'Developing web hosted novelty apps and GUI tools for controlling certain subsystems.',
+      title: 'Web and Mobile Developer',
+      description: 'Developing web and mobile applications using React, React Native, Kotlin, and Android development tools',
       iconSize: '60px'
     }
   ];
