@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://jonahskinner.example/sitemap.xml
+Sitemap: https://jonahskinner.vercel.app/sitemap.xml
