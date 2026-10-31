@@ -1,13 +1,11 @@
 import {
-  initGA,
   trackPageView,
   trackSectionView,
   trackProjectClick,
   trackSocialClick,
   trackContactInteraction,
   trackSkillInteraction,
-  trackNavigation,
-  GA_MEASUREMENT_ID
+  trackNavigation
 } from '../analytics';
 
 // Mock gtag function
