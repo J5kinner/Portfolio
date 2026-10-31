@@ -126,7 +126,7 @@ The navigation component features intelligent scroll-based highlighting:
 
 The project is configured for easy deployment to various platforms:
 
-- **Static Hosting** - Netlify, Vercel, GitHub Pages
+- **Static Hosting** - Vercel, GitHub Pages
 - **CDN Distribution** - Optimized for global content delivery
 - **Performance** - Built with modern bundling and optimization
 
