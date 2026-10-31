@@ -7,6 +7,10 @@ export interface Project {
   image: string; // poster/still image
   video?: string; // short muted looping clip (mp4)
   link?: string;
+  // Optional case-study fields: rendered only when filled in.
+  problem?: string;
+  role?: string;
+  outcome?: string;
   technologies: string[];
   category: 'web' | 'mobile' | 'fullstack' | 'other';
   featured?: boolean;

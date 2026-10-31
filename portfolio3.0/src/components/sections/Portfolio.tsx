@@ -59,6 +59,27 @@ const Description = styled.p`
   }
 `;
 
+const CaseStudy = styled.dl`
+  margin: 0 0 2em;
+`;
+
+const CaseStudyLabel = styled.dt`
+  color: ${({ theme }) => theme.colors.accent};
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  font-size: 0.75em;
+  margin-bottom: 0.4em;
+`;
+
+const CaseStudyText = styled.dd`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 0.9em;
+  line-height: 1.8em;
+  opacity: 0.9;
+  margin: 0 0 1em;
+`;
+
 const PortfolioImage = styled(motion.img)`
   border-radius: 1em;
   margin-top: 2em;
@@ -92,6 +113,12 @@ const ImagePlaceholder = styled.div`
     margin-left: 2em;
   }
 `;
+
+const caseStudyFields: { key: 'problem' | 'role' | 'outcome'; label: string }[] = [
+  { key: 'problem', label: 'Problem' },
+  { key: 'role', label: 'My role' },
+  { key: 'outcome', label: 'Outcome' }
+];
 
 const Portfolio: React.FC = () => {
   const projects = allProjects.filter(project => !project.featured);
@@ -163,6 +190,18 @@ const Portfolio: React.FC = () => {
             <Subtitle>{project.subtitle}</Subtitle>
             <Title>{project.title}</Title>
             <Description>{project.description}</Description>
+            {caseStudyFields.some(({ key }) => project[key]) && (
+              <CaseStudy data-testid={`case-study-${project.id}`}>
+                {caseStudyFields.map(({ key, label }) =>
+                  project[key] ? (
+                    <React.Fragment key={key}>
+                      <CaseStudyLabel>{label}</CaseStudyLabel>
+                      <CaseStudyText>{project[key]}</CaseStudyText>
+                    </React.Fragment>
+                  ) : null
+                )}
+              </CaseStudy>
+            )}
           </PortfolioLeft>
           {project.link ? (
             <a href={project.link} target="_blank" rel="noopener noreferrer">
