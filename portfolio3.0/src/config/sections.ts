@@ -2,6 +2,7 @@ import Hero from '../components/sections/Hero';
 import Featured from '../components/sections/Featured';
 import Skills from '../components/sections/Skills';
 import Portfolio from '../components/sections/Portfolio';
+import MobileShowcase from '../components/sections/MobileShowcase';
 import HireMe from '../components/sections/HireMe';
 
 export interface SectionConfig {
@@ -52,11 +53,20 @@ export const sectionConfigs: SectionConfig[] = [
     analyticsName: 'Portfolio Section'
   },
   {
+    id: 'mobile',
+    label: 'Mobile',
+    component: MobileShowcase,
+    enabled: true,
+    order: 5,
+    showInNavigation: false, // enable once screenshots are added to mobileScreens
+    analyticsName: 'Mobile Showcase Section'
+  },
+  {
     id: 'hire',
     label: 'Hire Me',
     component: HireMe,
     enabled: true,
-    order: 5,
+    order: 6,
     showInNavigation: true,
     analyticsName: 'Contact Section'
   }

@@ -29,6 +29,13 @@ export interface Experience {
   image?: string; // placeholder: image/gif to be provided
 }
 
+export interface MobileScreen {
+  id: string;
+  title: string;
+  image: string; // screenshot path under /images
+  caption?: string;
+}
+
 export interface Skill {
   id: string;
   title: string;
@@ -184,6 +191,11 @@ export const contactMethods: ContactMethod[] = [
     target: '_blank'
   }
 ];
+
+// Mobile app screenshots for the showcase carousel. Empty until screenshots are supplied.
+export const mobileScreens: MobileScreen[] = [];
+
+export const resumeUrl = '/Files/JonahSkinner_Resume2.0.pdf';
 
 // Helper functions
 export const getFeaturedProjects = (): Project[] => 

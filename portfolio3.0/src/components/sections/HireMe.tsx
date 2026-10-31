@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { resumeUrl } from '../../data/content';
 
 const HireSection = styled.section`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors.secondary} 100%);
@@ -119,6 +120,22 @@ const ContactCard = styled(motion.a)`
   .description {
     font-size: 0.9em;
     opacity: 0.8;
+  }
+`;
+
+const ResumeButton = styled.a`
+  display: inline-block;
+  margin-bottom: 2em;
+  padding: 0.8em 1.8em;
+  border-radius: 50px;
+  background: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.85;
   }
 `;
 
@@ -322,6 +339,9 @@ const HireMe: React.FC = () => {
             </ContactCard>
           ))}
         </ContactGrid>
+        <ResumeButton href={resumeUrl} download>
+          Download resume
+        </ResumeButton>
 
         {showContactForm && (
           <QuickContact
