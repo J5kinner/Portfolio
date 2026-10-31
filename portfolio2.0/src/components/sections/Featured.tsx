@@ -92,7 +92,7 @@ const Featured: React.FC = () => {
         </Description>
       </Left>
       <Image
-        src="/images/WandererNoBackground.webp"
+        src={`${process.env.PUBLIC_URL}/images/WandererNoBackground.webp`}
         alt="Featured Project"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}

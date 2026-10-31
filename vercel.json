@@ -1,0 +1,5 @@
+{
+  "buildCommand": "bash scripts/build.sh",
+  "outputDirectory": "dist",
+  "installCommand": "echo skip"
+}

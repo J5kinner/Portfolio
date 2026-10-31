@@ -5,6 +5,7 @@ import { Link } from 'react-scroll';
 import * as FaIcons from 'react-icons/fa';
 import { socialNavItems, NavItem } from '../../config/navigation';
 import { getNavigationSections, getSectionIds } from '../../config/sections';
+import VersionSwitcher from './VersionSwitcher';
 import { trackSocialClick, trackNavigation } from '../../utils/analytics';
 
 // Type guard to check if a value is a valid React component
@@ -379,6 +380,8 @@ const Navbar: React.FC = () => {
         <SocialLinks>
           {socialNavItems.map(renderSocialLink)}
         </SocialLinks>
+
+        <VersionSwitcher />
 
         <MobileMenuButton
           className={isMobileMenuOpen ? 'open' : ''}

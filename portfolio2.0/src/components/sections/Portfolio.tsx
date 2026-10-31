@@ -74,21 +74,21 @@ const Portfolio: React.FC = () => {
       subtitle: 'MERN Stack Web App',
       title: 'Paijolizmal',
       description: 'A collaborative team project where the main idea is a web application for students who can write their own rants as "notes" after completing pomodoros, they receive coins which can be used to buy more notes.',
-      image: '/images/paijolizmalMVP.gif',
+      image: `${process.env.PUBLIC_URL}/images/paijolizmalMVP.gif`,
       link: 'https://github.com/J5kinner/PaiJoLizMal'
     },
     {
       subtitle: 'Engineering Project',
       title: 'Elevator Project',
       description: 'Working with the motor controls team of a elevator project, our arduino software needed to interface with 2 other software engineering teams code. We also got to experience what it was like working with all other different types of engineers including, civil, mechanical and electrical engineers.',
-      image: '/images/liftWorking.gif',
+      image: `${process.env.PUBLIC_URL}/images/liftWorking.gif`,
       link: '#'
     },
     {
       subtitle: 'MERN Stack Web App',
       title: 'Swap Street',
       description: 'A collaborative project where the main idea is to give the community an application which allows trading of favours in exchange for more favours, these favours are tracked by using a coin system which is generated after completing favours for others.',
-      image: '/images/swapstreet.gif',
+      image: `${process.env.PUBLIC_URL}/images/swapstreet.gif`,
       link: 'https://infinite-refuge-32502.herokuapp.com/'
     }
   ];
