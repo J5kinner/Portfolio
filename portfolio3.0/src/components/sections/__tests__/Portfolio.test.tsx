@@ -27,3 +27,11 @@ describe('Portfolio', () => {
     expect(screen.queryByTestId('case-study-paijolizmal')).toBeNull();
   });
 });
+
+describe('Portfolio experiences', () => {
+  it('renders each experience company without empty bullets', () => {
+    render(<ThemeProvider theme={theme}><Portfolio /></ThemeProvider>);
+    expect(screen.getByText('Racing.com')).toBeTruthy();
+    expect(screen.queryByTestId('experience-bullets-racing-com')).toBeNull();
+  });
+});

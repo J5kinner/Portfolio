@@ -80,6 +80,28 @@ const CaseStudyText = styled.dd`
   margin: 0 0 1em;
 `;
 
+const Role = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 0.95em;
+  font-weight: 600;
+  margin: -0.5em 0 1em;
+`;
+
+const Dates = styled.span`
+  font-weight: 400;
+  opacity: 0.7;
+`;
+
+const Bullets = styled.ul`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 0.9em;
+  line-height: 1.8em;
+  opacity: 0.9;
+  padding-left: 1.2em;
+  margin: 0 0 2em;
+  list-style: disc;
+`;
+
 const PortfolioImage = styled(motion.img)`
   border-radius: 1em;
   margin-top: 2em;
@@ -169,7 +191,26 @@ const Portfolio: React.FC = () => {
           <PortfolioLeft>
             <Subtitle>{experience.technology}</Subtitle>
             <Title>{experience.company}</Title>
-            <Description>{experience.description}</Description>
+            {(experience.role || experience.startDate) && (
+              <Role>
+                {experience.role}
+                {experience.startDate && (
+                  <Dates>
+                    {experience.role ? ' · ' : ''}
+                    {experience.startDate}
+                    {experience.endDate ? ` – ${experience.endDate}` : ''}
+                  </Dates>
+                )}
+              </Role>
+            )}
+            {experience.description && <Description>{experience.description}</Description>}
+            {experience.bullets && experience.bullets.length > 0 && (
+              <Bullets data-testid={`experience-bullets-${experience.id}`}>
+                {experience.bullets.map(bullet => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </Bullets>
+            )}
           </PortfolioLeft>
           {experience.image ? (
             <PortfolioImage src={experience.image} alt={`${experience.company} preview`} />

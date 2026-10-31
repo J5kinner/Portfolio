@@ -22,6 +22,10 @@ export interface Experience {
   company: string;
   technology: string;
   description: string; // placeholder: to be provided
+  role?: string; // job title, shown when filled in
+  startDate?: string; // e.g. 'Jan 2024'
+  endDate?: string; // e.g. 'Present'
+  bullets?: string[]; // achievements, shown when non-empty
   image?: string; // placeholder: image/gif to be provided
 }
 
@@ -55,7 +59,7 @@ export interface HeroContent {
 // Content data
 export const heroContent: HeroContent = {
   title: "Building Digital\nExperiences",
-  subtitle: "Software Engineer & Mobile Developer",
+  subtitle: "Web and Mobile Developer",
   codeLines: [
     'class SoftwareEngineer {',
     ' private val skills = listOf(',
@@ -145,7 +149,7 @@ export const skills: Skill[] = [
   },
   {
     id: 'mobile-development',
-    title: 'Mobile App Developer',
+    title: 'Web and Mobile Developer',
     description: 'Developing mobile applications using React Native, Kotlin, and Android development tools',
     icon: 'Mobile',
     category: 'mobile',

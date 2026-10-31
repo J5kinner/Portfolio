@@ -266,7 +266,7 @@ const Hero: React.FC = () => {
               Experiences
             </Title>
             <Subtitle variants={fadeInUp}>
-              Software Engineer & Mobile Developer
+              Web and Mobile Developer
             </Subtitle>
             <CodeContainer variants={fadeInUp}>
               {codeLines.map((line, index) => (
