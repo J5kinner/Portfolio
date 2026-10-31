@@ -19,4 +19,5 @@ build_react portfolio2.0 "/v2"
 
 cp -R portfolio3.0/build/. dist/
 cp -R portfolio2.0/build/. dist/v2/
-rsync -a --exclude Archive portfolio1.0/ dist/v1/
+cp -R portfolio1.0/. dist/v1/
+rm -r dist/v1/Archive
