@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { experiences } from '../../data/content';
+import { experiences, projects as allProjects, Project } from '../../data/content';
 
 const PortfolioSection = styled.section`
   background: ${({ theme }) => theme.colors.primary};
@@ -69,6 +69,18 @@ const PortfolioImage = styled(motion.img)`
   }
 `;
 
+const PortfolioVideo = styled(motion.video)`
+  border-radius: 1em;
+  margin-top: 2em;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-left: 2em;
+  }
+`;
+
 const ImagePlaceholder = styled.div`
   min-height: 14em;
   border-radius: 1em;
@@ -82,29 +94,39 @@ const ImagePlaceholder = styled.div`
 `;
 
 const Portfolio: React.FC = () => {
-  const projects = [
-    {
-      subtitle: 'MERN Stack Web App',
-      title: 'Paijolizmal',
-      description: 'A collaborative team project where the main idea is a web application for students who can write their own rants as "notes" after completing pomodoros, they receive coins which can be used to buy more notes.',
-      image: '/images/paijolizmalMVP.gif',
-      link: 'https://github.com/J5kinner/PaiJoLizMal'
-    },
-    {
-      subtitle: 'Engineering Project',
-      title: 'Elevator Project',
-      description: 'Working with the motor controls team of a elevator project, our arduino software needed to interface with 2 other software engineering teams code. We also got to experience what it was like working with all other different types of engineers including, civil, mechanical and electrical engineers.',
-      image: '/images/liftWorking.gif',
-      link: '#'
-    },
-    {
-      subtitle: 'MERN Stack Web App',
-      title: 'Swap Street',
-      description: 'A collaborative project where the main idea is to give the community an application which allows trading of favours in exchange for more favours, these favours are tracked by using a coin system which is generated after completing favours for others.',
-      image: '/images/swapstreet.gif',
-      link: 'https://infinite-refuge-32502.herokuapp.com/'
+  const projects = allProjects.filter(project => !project.featured);
+
+  const renderMedia = (project: Project, index: number) => {
+    const motionProps = {
+      initial: { opacity: 0, x: 50 },
+      whileInView: { opacity: 1, x: 0 },
+      transition: { duration: 0.8, delay: index * 0.2 + 0.2, ease: 'easeOut' as const },
+      viewport: { once: true }
+    };
+    if (project.video) {
+      return (
+        <PortfolioVideo
+          src={project.video}
+          poster={project.image}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-label={`${project.title} preview`}
+          {...motionProps}
+        />
+      );
     }
-  ];
+    return (
+      <PortfolioImage
+        src={project.image}
+        alt={`${project.title} preview`}
+        loading="lazy"
+        {...motionProps}
+      />
+    );
+  };
 
   return (
     <PortfolioSection id="portfolio">
@@ -142,16 +164,13 @@ const Portfolio: React.FC = () => {
             <Title>{project.title}</Title>
             <Description>{project.description}</Description>
           </PortfolioLeft>
-          <a href={project.link} target="_blank" rel="noopener noreferrer">
-            <PortfolioImage
-              src={project.image}
-              alt={`${project.title} preview`}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 + 0.2, ease: "easeOut" }}
-              viewport={{ once: true }}
-            />
-          </a>
+          {project.link ? (
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              {renderMedia(project, index)}
+            </a>
+          ) : (
+            renderMedia(project, index)
+          )}
         </PortfolioContainer>
       ))}
     </PortfolioSection>
