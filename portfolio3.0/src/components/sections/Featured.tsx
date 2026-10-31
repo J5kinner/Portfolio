@@ -93,7 +93,7 @@ const Featured: React.FC = () => {
       </Left>
       <Image
         src="/images/WandererNoBackground.webp"
-        alt="Featured Project"
+        alt="Wanderer Travel App screens showing city listings and categories"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

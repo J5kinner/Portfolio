@@ -315,6 +315,7 @@ const Navbar: React.FC = () => {
       <SocialLink
         key={item.id}
         href={item.path}
+        aria-label={`${item.label} (opens in new tab)`}
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.1 }}
@@ -435,6 +436,7 @@ const Navbar: React.FC = () => {
                   <MobileSocialLink
                     key={item.id}
                     href={item.path}
+                    aria-label={`${item.label} (opens in new tab)`}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
