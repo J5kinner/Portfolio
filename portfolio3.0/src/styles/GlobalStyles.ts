@@ -33,6 +33,37 @@ const GlobalStyles = createGlobalStyle`
     height: auto;
   }
 
+  :focus-visible {
+    outline: 3px solid #27cc91;
+    outline-offset: 3px;
+  }
+
+  main:focus {
+    outline: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1em;
+    top: -4em;
+    z-index: 10000;
+    padding: 0.75em 1em;
+    background: #27cc91;
+    color: #0c1833;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+
+  .skip-link:focus {
+    top: 1em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   section {
     padding: 4em 2em;
     text-align: center;
