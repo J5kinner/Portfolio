@@ -4,8 +4,9 @@ export interface Project {
   title: string;
   subtitle: string;
   description: string;
-  image: string;
-  link: string;
+  image: string; // poster/still image
+  video?: string; // short muted looping clip (mp4)
+  link?: string;
   technologies: string[];
   category: 'web' | 'mobile' | 'fullstack' | 'other';
   featured?: boolean;
@@ -87,7 +88,8 @@ export const projects: Project[] = [
     title: 'Paijolizmal',
     subtitle: 'MERN Stack Web App',
     description: 'A collaborative team project where the main idea is a web application for students who can write their own rants as "notes" after completing pomodoros, they receive coins which can be used to buy more notes.',
-    image: '/images/paijolizmalMVP.gif',
+    image: '/images/paijolizmalMVP-poster.jpg',
+    video: '/images/paijolizmalMVP.mp4',
     link: 'https://github.com/J5kinner/PaiJoLizMal',
     technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
     category: 'fullstack',
@@ -97,9 +99,9 @@ export const projects: Project[] = [
     id: 'elevator',
     title: 'Elevator Project',
     subtitle: 'Engineering Project',
-    description: 'Working with the motor controls team of a elevator project, our arduino software needed to interface with 2 other software engineering teams code. We also got to experience what it was like working with all other different types of engineers.',
-    image: '/images/liftWorking.gif',
-    link: '#',
+    description: 'Working with the motor controls team of a elevator project, our arduino software needed to interface with 2 other software engineering teams code. We also got to experience what it was like working with all other different types of engineers including, civil, mechanical and electrical engineers.',
+    image: '/images/liftWorking-poster.jpg',
+    video: '/images/liftWorking.mp4',
     technologies: ['Arduino', 'C++', 'Hardware Integration'],
     category: 'other',
     order: 3
@@ -109,7 +111,8 @@ export const projects: Project[] = [
     title: 'Swap Street',
     subtitle: 'MERN Stack Web App',
     description: 'A collaborative project where the main idea is to give the community an application which allows trading of favours in exchange for more favours, these favours are tracked by using a coin system.',
-    image: '/images/swapstreet.gif',
+    image: '/images/swapstreet-poster.jpg',
+    video: '/images/swapstreet.mp4',
     link: 'https://infinite-refuge-32502.herokuapp.com/',
     technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Heroku'],
     category: 'fullstack',

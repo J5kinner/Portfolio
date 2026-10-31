@@ -61,6 +61,7 @@ jest.mock('framer-motion', () => ({
     input: createMotionMock('input'),
     textarea: createMotionMock('textarea'),
     img: createMotionMock('img'),
+    video: createMotionMock('video'),
     ul: createMotionMock('ul'),
     li: createMotionMock('li')
   },
